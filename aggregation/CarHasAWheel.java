@@ -22,7 +22,8 @@ class Car {
 class Main {
   public static void main(String args[]) {
       Wheel wl = new Wheel(17, "Chrome");
-      Car obj = new Car(2021, "Tesla", wl);       System.out.println(obj.yearModel);
+      Car obj = new Car(2021, "Tesla", wl);
+      System.out.println(obj.yearModel);
       System.out.println(obj.make);
       System.out.println(obj.carWheel.size);
       System.out.println(obj.carWheel.material);
