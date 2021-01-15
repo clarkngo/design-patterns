@@ -3,8 +3,7 @@
 import java.io.*;
 
 // class bank
-class BankAccount
-{
+class BankAccount {
 	private String owner;
 	BankAccount(String o) {
 		this.owner = o;
@@ -13,7 +12,6 @@ class BankAccount
 		return this.owner;
 	}
 }
-
 // employee class
 class OverdrawnAccountsReport {
 	private String quarterAndYearGenerated;
@@ -28,8 +26,7 @@ class OverdrawnAccountsReport {
 }
 // Association between both the
 // classes in main method
-class Association
-{
+class Association {
 	public static void main (String[] args)
 	{
 		BankAccount bnkAcct = new BankAccount("Clark");
