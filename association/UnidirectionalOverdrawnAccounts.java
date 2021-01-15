@@ -2,7 +2,6 @@
 // concept of Association
 import java.io.*;
 
-// class bank
 class BankAccount {
 	private String owner;
 	BankAccount(String o) {
@@ -12,10 +11,8 @@ class BankAccount {
 		return this.owner;
 	}
 }
-// employee class
 class OverdrawnAccountsReport {
 	private String quarterAndYearGenerated;
-	// employee name
 	OverdrawnAccountsReport(String s) {
 		this.quarterAndYearGenerated = s;
 	}
