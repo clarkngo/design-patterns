@@ -50,7 +50,7 @@ class Truck implements Transport {
 class Main {
   private static Logistics logistics;
   public static void main(String[] args) {
-    configure("land");    // change this to "land" or
+    configure("land");    // change this to "land" or "sea"
     runBusinessLogic();
   }
   static void configure(String mode) {
