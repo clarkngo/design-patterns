@@ -243,25 +243,25 @@ class SocialSpammer {
 class Main {
   public static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-      System.out.println("Please specify social network to target spam tool (default:Facebook):");
-      System.out.println("1. Facebook");
-      String choice = scanner.nextLine();
+  public static void main(String[] args) {
+    System.out.println("Please specify social network to target spam tool (default:Facebook):");
+    System.out.println("1. Facebook");
+    String choice = scanner.nextLine();
 
-      SocialNetwork network;
-      if (choice.equals("1")) {
-        network = new Facebook(createTestProfiles());
-      }
-      else {
-        network = new Facebook(createTestProfiles());
-      }
-
-      SocialSpammer spammer = new SocialSpammer(network);
-      spammer.sendSpamToFriends("anna.smith@bing.com",
-            "Hey! This is Anna's friend Josh. Can you do me a favor and like this post [link]?");
-      spammer.sendSpamToCoworkers("anna.smith@bing.com",
-            "Hey! This is Anna's boss Jason. Anna told me you would be interested in [link].");
+    SocialNetwork network;
+    if (choice.equals("1")) {
+      network = new Facebook(createTestProfiles());
     }
+    else {
+      network = new Facebook(createTestProfiles());
+    }
+
+    SocialSpammer spammer = new SocialSpammer(network);
+    spammer.sendSpamToFriends("anna.smith@bing.com",
+          "Hey! This is Anna's friend Josh. Can you do me a favor and like this post [link]?");
+    spammer.sendSpamToCoworkers("anna.smith@bing.com",
+          "Hey! This is Anna's boss Jason. Anna told me you would be interested in [link].");
+  }
 
   public static List<Profile> createTestProfiles() {
     List<Profile> data = new ArrayList<Profile>();
