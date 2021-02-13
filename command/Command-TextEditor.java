@@ -45,7 +45,8 @@ abstract class Command {
   public abstract boolean execute();
 }
 
-// CopyCommand (a ConcreteCommand) defintes binding between action/s (getSelectedText()) and a Receiver (Editor)
+// CopyCommand (a ConcreteCommand) defintes binding between 
+// action/s (getSelectedText()) and a Receiver (Editor)
 class CopyCommand extends Command {
 
   public CopyCommand(Editor editor) {
@@ -59,7 +60,8 @@ class CopyCommand extends Command {
   }
 }
 
-// PasteCommand (a ConcreteCommand) defintes binding between action/s (insert() and getCaretPosition()) and a Receiver (Editor)
+// PasteCommand (a ConcreteCommand) defintes binding between 
+// action/s (insert() and getCaretPosition()) and a Receiver (Editor)
 class PasteCommand extends Command {
 
   public PasteCommand(Editor editor) {
@@ -76,7 +78,8 @@ class PasteCommand extends Command {
   }
 }
 
-// CutCommand (a ConcreteCommand) defintes binding between action/s (getText(), getSelectedText(), and setText()) and a Receiver (Editor)
+// CutCommand (a ConcreteCommand) defintes binding between 
+// action/s (getText(), getSelectedText(), and setText()) and a Receiver (Editor)
 class CutCommand extends Command {
 
   public CutCommand(Editor editor) {
@@ -194,6 +197,7 @@ class Editor {
   }
 }
 
+// Client
 class Main {
   public static void main(String[] args) {
     Editor editor = new Editor();
