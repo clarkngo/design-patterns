@@ -23,8 +23,7 @@ interface Command {
     public void execute();
   }
   
-  // ConcreteCommand defintes binding between action (on() and off()) 
-  // and a Receiver (Light)
+  // ConcreteCommand defintes binding between action (on() and off()) and a Receiver (Light)
   class LightOnOffCommand implements Command {
     Light light;
     public LightOnOffCommand(Light light) {
@@ -40,8 +39,7 @@ interface Command {
     }
   }
   
-  // Receiver (Light) knows how to perform the work 
-  // needed to carryout the request. 
+  // Receiver (Light) knows how to perform the work needed to carryout the request. 
   // Any class can act as a Receiver 
   class Light {
     private boolean isOn = false;
@@ -50,12 +48,8 @@ interface Command {
       this.isOn = false;
     }
   
-    boolean getLightState() { 
-        return this.isOn; 
-    }
-    void setLightState() {
-        this.isOn = !this.isOn;
-    }
+    boolean getLightState() { return this.isOn; }
+    void setLightState() {this.isOn = !this.isOn;}
   
     void on() {
       this.setLightState();
