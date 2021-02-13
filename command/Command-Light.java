@@ -50,8 +50,12 @@ interface Command {
       this.isOn = false;
     }
   
-    boolean getLightState() { return this.isOn; }
-    void setLightState() {this.isOn = !this.isOn;}
+    boolean getLightState() { 
+        return this.isOn; 
+    }
+    void setLightState() {
+        this.isOn = !this.isOn;
+    }
   
     void on() {
       this.setLightState();
