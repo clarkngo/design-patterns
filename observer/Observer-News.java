@@ -8,17 +8,12 @@ that's why subclasses can't be used as observables.
 
 You may represent the classes and interfaces in separate Java files:
 
-channels
+observers
 |_ Channel.java
 |_ NewsChannel.java
 
-observable 
-|_ ONewsAgency.java
-
-observer
-|_ ONewsChannel.java
-
-NewsAgency
+observables
+|_ NewsAgency.java
 
 Main.java
 
@@ -27,37 +22,17 @@ Source: https://www.baeldung.com/java-observer-pattern
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-
 
 import static org.junit.Assert.*;
 
-interface Channel {
-  public void update(Object o);
-}
-
-class NewsChannel implements Channel {
-  private String news;
-
-  @Override
-  public void update(Object news) {
-    this.setNews((String) news);
-  }
-
-  public String getNews() {
-    return news;
-  }
-
-  public void setNews(String news) {
-    this.news = news;
-  }
-}
+// a news agency can notify channels when it receives news. 
+// Receiving news is what changes the state of the news agency, 
+// and it causes the channels to be notified.
 
 // NewsAgency is an observable, and when news gets updated, 
 // the state of NewsAgency changes. When the change happens, 
-// NewsAgency notifies the observers about this fact by 
-// calling their update() method.
+// NewsAgency notifies the observers about this fact 
+// by calling their update() method.
 class NewsAgency {
   private String news;
   private List<Channel> channels = new ArrayList<>();
@@ -78,27 +53,16 @@ class NewsAgency {
   }
 }
 
-// To define the observable, we need to extend 
-// Java's Observable class:
-class ONewsAgency extends Observable {
-  private String news;
-
-  public void setNews(String news) {
-    this.news = news;
-    setChanged();
-    notifyObservers(news);
-  }
-}
-
-// The java.util.Observer interface defines the 
-// update() method, so there's no need to define it ourselves
-class ONewsChannel implements Observer {
+// To be able to do that, the observable object needs 
+// to keep references to the observers, and in our case, 
+// it's the channels variable.
+class NewsChannel implements Channel {
   private String news;
 
   @Override
-  public void update(Observable o, Object news) {
+  public void update(Object news) {
     this.setNews((String) news);
-  }
+  } 
 
   public String getNews() {
     return news;
@@ -106,7 +70,11 @@ class ONewsChannel implements Observer {
 
   public void setNews(String news) {
     this.news = news;
-  }
+  } 
+}
+
+interface Channel {
+  public void update(Object o);
 }
 
 // if we add an instance of NewsChannel to the 
@@ -117,7 +85,7 @@ class Main {
   public static void main(String[] args) {
     NewsAgency observable = new NewsAgency();
     NewsChannel observer = new NewsChannel();
-
+    
     observable.addObserver(observer);
     observable.setNews("news");
     assertEquals(observer.getNews(), "news");
