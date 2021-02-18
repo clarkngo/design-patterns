@@ -2,7 +2,9 @@
 Design Pattern - Observer
 All classes and interfaces are in a single file for quick copy-paste and test run of the code.
 
-Note: Observer interface isn't perfect and is deprecated since Java 9. One of its cons is that Observable isn't an interface but a class, that's why subclasses can't be used as observables.
+Note: Observer interface isn't perfect and is deprecated since Java 9. 
+One of its cons is that Observable isn't an interface but a class, 
+that's why subclasses can't be used as observables.
 
 You may represent the classes and interfaces in separate Java files:
 
@@ -20,16 +22,14 @@ NewsAgency
 
 Main.java
 
-Source: 
+Source: https://www.baeldung.com/java-observer-pattern
 **/
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
+
 
 import static org.junit.Assert.*;
 
