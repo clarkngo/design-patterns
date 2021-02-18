@@ -2,10 +2,6 @@
 Design Pattern - Observer
 All classes and interfaces are in a single file for quick copy-paste and test run of the code.
 
-Note: Observer interface isn't perfect and is deprecated since Java 9. 
-One of its cons is that Observable isn't an interface but a class, 
-that's why subclasses can't be used as observables.
-
 You may represent the classes and interfaces in separate Java files:
 
 observers
@@ -13,17 +9,24 @@ observers
 |_ NewsChannel.java
 
 observables
+|_ Agency.java
 |_ NewsAgency.java
 
 Main.java
 
-Source: https://www.baeldung.com/java-observer-pattern
+Reference: https://www.baeldung.com/java-observer-pattern
 **/
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
+
+/* Observerables */
+interface Agency {
+  public void addObserver(Channel channel);
+  public void removeObserver(Channel channel);
+}
 
 // a news agency can notify channels when it receives news. 
 // Receiving news is what changes the state of the news agency, 
@@ -33,14 +36,16 @@ import static org.junit.Assert.*;
 // the state of NewsAgency changes. When the change happens, 
 // NewsAgency notifies the observers about this fact 
 // by calling their update() method.
-class NewsAgency {
+class NewsAgency implements Agency {
   private String news;
   private List<Channel> channels = new ArrayList<>();
 
+  @Override
   public void addObserver(Channel channel) {
     this.channels.add(channel);
   }
 
+  @Override
   public void removeObserver(Channel channel) {
     this.channels.remove(channel);
   }
@@ -51,6 +56,11 @@ class NewsAgency {
       channel.update(this.news);
     }
   }
+}
+
+/* Observers */
+interface Channel {
+  public void update(Object o);
 }
 
 // To be able to do that, the observable object needs 
@@ -73,16 +83,12 @@ class NewsChannel implements Channel {
   } 
 }
 
-interface Channel {
-  public void update(Object o);
-}
-
-// if we add an instance of NewsChannel to the 
-// list of observers, and change the state of 
-// NewsAgency, the instance of NewsChannel 
-// will be updated:
 class Main {
   public static void main(String[] args) {
+    // if we add an instance of NewsChannel to the 
+    // list of observers, and change the state of 
+    // NewsAgency, the instance of NewsChannel 
+    // will be updated:
     NewsAgency observable = new NewsAgency();
     NewsChannel observer = new NewsChannel();
     
