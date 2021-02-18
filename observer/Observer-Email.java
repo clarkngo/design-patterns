@@ -2,6 +2,8 @@
 Design Pattern - Observer
 All classes and interfaces are in a single file for quick copy-paste and test run of the code.
 
+Note: this code has no output.
+
 You may represent the classes and interfaces in separate Java files:
 
 publisher
